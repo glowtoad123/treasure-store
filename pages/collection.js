@@ -69,9 +69,9 @@ function Collection(){
             }
 
         if(localStorage.getItem('pearlId')){
-            localStorage.setItem('pearlId', JSON.stringify(idNum))
+            localStorage.setItem('pearlId', idNum)
           } else{
-              localStorage.setItem('pearlId', JSON.stringify(idNum))
+              localStorage.setItem('pearlId', idNum)
             }
     }
 

@@ -1,4 +1,4 @@
-//import React from 'react'
+import React from 'react'
 import Link from 'next/link'
 
 
@@ -7,7 +7,7 @@ function Items(props){
 
 
     return(
-        <div onClick={props.makeaddress} className="card">
+        <div  onClick={props.makeaddress} className="card">
             <p className="verses">{props.verses}</p>
             <p style={{display: "none"}} name="scripture" className="inside" id={props.verses}>{props.scripture}</p>
             <p style={{display: "none"}} name="scripture" className="inside" id={props.verses}>{props.gem}</p>
@@ -17,8 +17,8 @@ function Items(props){
             <p style={{display: "none"}} name="scripture" className="inside" id={props.verses}>{props.jehovah}</p>
             <p style={{display: "none"}}>{props.position}</p>
             <button value="reveal" key={props.position} id="reveal" onClick={props.onClick} className="reveal">reveal</button>
-            <Link href={props.url}><a title="edit" id="edit" className="ms-depth-64">edit</a></Link>
-
+            <Link href={`/post?title=${props.position}`} as={props.scripture}><a title="edit" id="edit" className="ms-depth-64">edit</a></Link>
+            <button className="reveal" onClick={() => {props.deleteCard(props.id)}}>Delete</button>
             {/*<p name="cardId" style={{display: "none"}}>{props.verses}</p>*/}
         </div>
     )

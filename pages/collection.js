@@ -7,9 +7,6 @@ import Items from './items'
 function Collection(){
 
     const newPearls = JSON.parse(localStorage.getItem('pearl'))
-
-
-    
     const [appearance, setAppearance] = useState(false)
     const [siteaddress, setsiteaddress] = useState("")
 
@@ -45,13 +42,13 @@ function Collection(){
     })
 
     function makesiteaddress(event){
-        const part1 = "/post?title=$"
+        /*const part1 = "/post?title=$"
         const part2 = event.target.parentElement.children[7].innerText
         const whole = part1 + part2
         const divs = document.getElementsByTagName("div")
         //const divLocation = divs.filter(part => event.target.parent === part)
         //console.log(divLocation)
-        setsiteaddress(whole)
+        setsiteaddress(whole)*/
         setInfo({
                verses: event.target.parentElement.children[0].innerText,
             scripture: event.target.parentElement.children[1].innerText,
@@ -69,10 +66,23 @@ function Collection(){
             }
 
         if(localStorage.getItem('pearlId')){
-            localStorage.setItem('pearlId', JSON.stringify(idNum))
+            localStorage.setItem('pearlId', idNum)
           } else{
-              localStorage.setItem('pearlId', JSON.stringify(idNum))
+              localStorage.setItem('pearlId', idNum)
             }
+    }
+
+    const [list, setList] = useState(newPearls)
+
+
+    function deleteCard(id){
+        setList((selected) => {
+            console.log(selected)
+            console.log(id)
+            return selected.filter((list, index) => {return index !== id})
+        })
+        console.log(list)
+        localStorage.setItem('pearl', JSON.stringify(list))
     }
 
 
@@ -85,7 +95,7 @@ function Collection(){
         <div>
             <Topbar />
             {/*{Treasures.map((card, index) => {return <Items key={index} onClick={revealfood} verses={card.verse} scripture={card.scripture} gem={card.gem} faith={card.faith} application={card.application} help={card.help} jehovah={card.jehovah}/>})}*/}
-            {newPearls.map((card, index) => {return <Items makeaddress={makesiteaddress} position={index} url={siteaddress} onClick={revealfood} verses={card.verses} scripture={card.scripture} gem={card.gem} faith={card.faith} application={card.application} help={card.help} jehovah={card.jehovah}/>})}
+            {list.map((card, index) => {return <Items deleteCard={deleteCard} makeaddress={makesiteaddress} position={index} url={siteaddress} onClick={revealfood} verses={card.verses} scripture={card.scripture} gem={card.gem} faith={card.faith} application={card.application} help={card.help} jehovah={card.jehovah}/>})}
       
         </div>
     )

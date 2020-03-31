@@ -2,10 +2,9 @@ import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
 import Head from 'next/head'
 import Link from 'next/link'
-import Start from './start'
-import Topbar from './topbar'
-import Collection from './collection'
-import Treasures from './treasures'
+import Start from './start.js'
+import Topbar from './topbar.js'
+
 
 
 /*const Home = () => (

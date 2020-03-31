@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import Treasures from './treasures'
 
 function Start(){
 
@@ -33,6 +34,8 @@ function Start(){
         event.preventDefault()
 
       }
+
+
 
       
 
